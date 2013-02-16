@@ -1,7 +1,8 @@
 /**
-Code by pnig0s
-Date 20130214(Shit Valentine's Day)
+Code by pnig0s[Knownsec&FreeBuf]
+Date 20130214
 一個通用的js任意函數鉤子
+A simple hooks to Javascript functions
 
 [bool]hook:params{
 	realFunc[String|must]:用於保存原始的目標函數名,用於unHook;
@@ -17,7 +18,7 @@ Date 20130214(Shit Valentine's Day)
 
 **/
 
-function Hook()
+function Hooks()
 {
 	return {
 		initEnv:function () {
