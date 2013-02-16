@@ -19,16 +19,36 @@ A hooks to any Javascript function.
 ##Examples
 ```
 <script src=hook.js></script>
-var myHooks = Hooks();
-myHooks.initEnv(); //init hooks
+var myHook = new Hooks();
+myHook.initEnv();
 
-//global native function
-var myAlert = function(){console.log("Hooked.")};
-alert.hook("_alert",myAlert); //true
-alert("pnig0s");
-//Hooked.
-//pnig0s
-alert.unhook("_alert","alert"); //true
+//普通全局函数
+var _alert = null;
+function myalert(param){console.log("before hook");}
+alert.hook("_alert",myalert);
+alert.unhook("_alert","alert");
+alert(1);
+
+//自定义对象匿名函数
+function Person() {
+this.getName = function(name) {
+alert('Call' + name);
+}
+} 
+var p = new Person();
+var _p_getName = null;
+function mygetName(name){alert("Hooked");}
+p.getName.hook("_p_getName",mygetName,p,"getName");
+p.getName.unhook("_p_getName","getName",p);
+p.getName("pnig0s");
+
+//原型对象函数
+var _slice = null;
+function myslice(param){alert("Hooked");}
+String.prototype.slice.hook("_slice",myslice,String.prototype);
+String.prototype.slice.unhook("_slice","slice",String.prototype);
+var str = "pnig0s";
+str.slice(1);
 
 myHooks.cleanEnv(); //clear hooks
 ```
