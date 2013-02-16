@@ -16,7 +16,7 @@ A hooks to any Javascript function.
 	context[Object|opt]:目標函數實例的對象,用於hook非window對象下的函數，如String.protype.slice,carInstance1
 }
 ```
-##Usage
+##Examples
 ```
 <script src=hook.js></script>
 var myHooks = Hooks();
